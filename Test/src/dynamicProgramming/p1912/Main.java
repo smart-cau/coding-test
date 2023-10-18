@@ -1,5 +1,6 @@
 // 백준 1912. 연속합
 // https://www.acmicpc.net/problem/1912
+// silver 2
 package dynamicProgramming.p1912;
 
 import java.io.*;
@@ -9,6 +10,7 @@ public class Main {
     static FastReader scan = new FastReader();
     static int N;
     static int[] seq;
+    static int[] dy;
 
     public static void main(String[] args) {
         input();
@@ -24,7 +26,18 @@ public class Main {
     }
 
     static void pro() {
-
+        dy = new int[N];
+        int max = seq[N - 1]; // init value
+        dy[N - 1] = seq[N - 1];
+        if (N > 1)
+            for (int i = N - 2; i >= 0; i--) {
+                dy[i] = seq[i];
+                if (dy[i] + dy[i + 1] > dy[i])
+                    dy[i] += dy[i + 1];
+                if (max < dy[i])
+                    max = dy[i];
+            }
+        System.out.println(max);
     }
 
     static class FastReader {
