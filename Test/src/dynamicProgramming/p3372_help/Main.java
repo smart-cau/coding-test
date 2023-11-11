@@ -1,17 +1,17 @@
 // 백준 3372번. 보드 점프
 // https://www.acmicpc.net/problem/3372
 // silver 1
-package dynamicProgramming.p3372;
+package dynamicProgramming.p3372_help;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 public class Main {
     static FastReader scan = new FastReader();
     static int N;
     static int[][] board;
-    static int[][] dy;
-    static int count = 0;
+    static BigInteger[][] dy;
 
     public static void main(String[] args) {
         input();
@@ -30,31 +30,30 @@ public class Main {
     }
 
     static void pro() {
-        rec(N - 1, N - 1);
-        System.out.println(count);
+        System.out.println(solution());
     }
 
-    static void rec(int row, int column) {
-        if (row == 0 && column == 0) {
-            ++count;
-            return;
+    static BigInteger solution() {
+        dy = new BigInteger[N][N];
+        for (int row = 0; row < N; row++) {
+            for (int column = 0; column < N; column++) {
+                dy[row][column] = BigInteger.ZERO;
+            }
         }
-        // row 탐색
-        if (row != 0)
-            for (int r = row - 1; r >= 0; r--) {
-                if (r + board[r][column] == row)
-                    rec(r, column);
-                else
-                    continue;
+
+        dy[0][0] = BigInteger.ONE;
+        for (int row = 0; row < N; row++) {
+            for (int column = 0; column < N; column++) {
+                if (row == N - 1 && column == N - 1)
+                    break;
+                int v = board[row][column];
+                if (v + row < N)
+                    dy[v + row][column] = dy[v + row][column].add(dy[row][column]);
+                if (v + column < N)
+                    dy[row][v + column] = dy[row][v + column].add(dy[row][column]);
             }
-        // column 탐색
-        if (column != 0)
-            for (int c = column - 1; c >= 0; c--) {
-                if (c + board[row][c] == column)
-                    rec(row, c);
-                else
-                    continue;
-            }
+        }
+        return dy[N - 1][N - 1];
     }
 
     static class FastReader {
