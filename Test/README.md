@@ -1,4 +1,7 @@
 # TIL
+#### 23.12.03
+* [백준 3085번. 사탕게임](https://www.acmicpc.net/problem/3085)
+    * scanner에서 nextInt() 이후 바로 nextLine()을 하면 입력이 안되는 이유 -> [링크](https://watermelon-sugar.tistory.com/36)
 
 #### 23.11.26
 * [백준 18111번. 마인크래프트](https://www.acmicpc.net/problem/18111)
