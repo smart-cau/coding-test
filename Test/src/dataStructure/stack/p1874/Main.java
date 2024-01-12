@@ -4,9 +4,10 @@
 
 package dataStructure.stack.p1874;
 
+import java.io.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -14,7 +15,7 @@ public class Main {
     static int[] sequence;
     static Deque<Integer> stack = new ArrayDeque<>();
     static StringBuilder sb = new StringBuilder();
-    static Scanner sc = new Scanner(System.in);
+    static FastReader scan = new FastReader();
 
     public static void main(String[] args) {
         input();
@@ -22,10 +23,10 @@ public class Main {
     }
 
     static void input() {
-        max = sc.nextInt();
+        max = scan.nextInt();
         sequence = new int[max];
         for (int i = 0; i < max; i++) {
-            sequence[i] = sc.nextInt();
+            sequence[i] = scan.nextInt();
         }
     }
 
@@ -37,27 +38,62 @@ public class Main {
 
     static void stackSequence() {
         // sequence iterator
-        int number = 0;
+        int number = 1;
         for (int index = 0; index < max; index++) {
             int element = sequence[index];
             // stack push & pop iterator
-            while (true) {
-                if (element >= number) {
-                    ++number;
-                    stack.push(number);
-                    sb.append("+\n");
-                }
-                if (element == stack.peek()) {
-                    stack.pop();
-                    sb.append("-\n");
-                    break;
-                }
-                if (number == max && element != stack.peek()) {
-                    sb = new StringBuilder();
-                    sb.append("NO");
-                    return;
+            while (element >= number) {
+                stack.push(number);
+                sb.append("+\n");
+                ++number;
+            }
+            if (element == stack.peek()) {
+                stack.pop();
+                sb.append("-\n");
+                continue;
+            }
+        }
+        if (!stack.isEmpty()) {
+            sb = new StringBuilder();
+            sb.append("NO");
+        }
+    }
+
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastReader() {
+            br = new BufferedReader(new InputStreamReader(System.in));
+        }
+
+        public FastReader(String s) throws FileNotFoundException {
+            br = new BufferedReader(new FileReader(new File(s)));
+        }
+
+        String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+        String nextLine() {
+            String str = "";
+            try {
+                str = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
         }
     }
 }
