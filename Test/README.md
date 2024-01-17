@@ -1,5 +1,11 @@
 # TIL
 
+#### 24.01.17
+
+* [백준 2493번. 탑](https://www.acmicpc.net/problem/2493)
+  * Monotonic Stack에 대한 이해가 있어야 풀 수 있는 문제. 해당 개념에 대한 확실한 이해 필요
+
+
 #### 24.01.12
 
 * [백준 1874번. 스택 수열](https://www.acmicpc.net/problem/1874)
