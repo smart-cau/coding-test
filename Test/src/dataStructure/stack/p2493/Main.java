@@ -1,6 +1,6 @@
-// 백준 2493번. 탑
+// 백준 2493번. 탑(Monotonic stack)
 // https://www.acmicpc.net/problem/2493
-// gold 4
+// gold 5
 package dataStructure.stack.p2493;
 
 import java.io.*;
@@ -9,8 +9,8 @@ import java.util.*;
 public class Main {
 
     static int N;
-    static Deque<Tower> towers = new ArrayDeque<>();
-    static Deque<String> result = new ArrayDeque<>();
+    static int[] inputs;
+    static Deque<Tower> stack = new ArrayDeque<>();
     static StringBuilder sb = new StringBuilder();
     static FastReader scan = new FastReader();
 
@@ -21,53 +21,31 @@ public class Main {
 
     static void input() {
         N = scan.nextInt();
+        inputs = new int[N];
         for (int i = 0; i < N; i++) {
-            towers.push(new Tower(i + 1, scan.nextInt()));
+            inputs[i] = scan.nextInt();
         }
     }
 
     static void solution() {
-        while (towers.size() != 0) {
-            if (towers.size() == 1) {
-                result.push("0");
-                towers.pop();
-                break;
-            }
+        for (int i = 0; i < N; i++) {
+            int height = inputs[i];
 
-            Tower receiver = findReceiver();
-            if (receiver != null) {
-                result.push(Integer.toString(receiver.index));
+            while (!stack.isEmpty() && stack.peek().height < height) {
+                stack.pop();
             }
-
-            // 높은 탑을 못찾을 경우
-            if (receiver == null) {
-                result.push("0");
+            if (stack.isEmpty()) {
+                sb.append("0 ");
             }
-
-            towers.pop();
+            if (!stack.isEmpty() && stack.peek().height > height) {
+                sb.append(stack.peek().index + " ");
+            }
+            stack.push(new Tower(i + 1, height));
         }
 
         // print
-        Iterator<String> it = result.iterator();
-        while (it.hasNext()) {
-            sb.append(it.next() + " ");
-        }
-        System.out.println(sb.toString());
-    }
 
-    static Tower findReceiver() {
-        Tower receiver = null;
-        Tower head = towers.peek();
-        Iterator<Tower> it = towers.iterator();
-        // 높은 탑 찾기
-        while (it.hasNext()) {
-            Tower tower = it.next();
-            if (head.height < tower.height) {
-                receiver = tower;
-                break;
-            }
-        }
-        return receiver;
+        System.out.println(sb.toString());
     }
 
     static class Tower {
