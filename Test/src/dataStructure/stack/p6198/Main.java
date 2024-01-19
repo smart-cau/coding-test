@@ -13,7 +13,7 @@ public class Main {
     static int[] heights;
     static Deque<Integer> stack = new ArrayDeque<>();
     static Scanner scan = new Scanner(System.in);
-    static int result = 0;
+    static long result = 0;
 
     public static void main(String[] args) {
         input();
@@ -32,20 +32,19 @@ public class Main {
     static void solution() {
         for (int i = 0; i < N; i++) {
             int height = heights[i];
-
+            boolean isSame = false;
             while (!stack.isEmpty() && stack.peek() <= height) {
-                result += stack.size() - 1;
+                if (stack.peek() == height) {
+                    result += stack.size() - 1;
+                    isSame = true;
+                }
                 stack.pop();
             }
             stack.push(height);
-            if (!stack.isEmpty() && stack.peek() > height) {
-                // ++result;
-            }
+            if (!isSame)
+                result += stack.size() - 1;
         }
-        while (!stack.isEmpty()) {
-            result += stack.size() - 1;
-            stack.pop();
-        }
+
         System.out.println(result);
     }
 }
