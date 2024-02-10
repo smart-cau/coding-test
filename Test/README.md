@@ -17,9 +17,17 @@
 * **Data structure**
   * Stack
     * Monotonic stack
+  * Queue
+  * Dequeue
   * Linked list
 
 ## TIL
+
+#### 24.02.10
+
+* [백준 3190번. 뱀](https://www.acmicpc.net/problem/3190)
+  * 문제를 객체지향적으로 풀려고 하면 코드 짜기 너무 복잡해진다... 객체지향적인 방법은 코테 문제 푸는데 좋은 접근법은 아닌 것 같다.
+    * class는 정말 필요할 때만 사용하자
 
 #### 24.01.19
 
