@@ -4,11 +4,7 @@
 package dataStructure.queue.p3190;
 
 import java.io.*;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
@@ -57,7 +53,7 @@ public class Main {
     static void solution() {
         cells = new Cell[N][N];
         snake.add(new Position(0, 0));
-        int time = 1;
+        int time = 0;
         // init board
         for (int row = 0; row < N; row++) {
             for (int column = 0; column < N; column++) {
@@ -71,15 +67,18 @@ public class Main {
 
         Moves moves = new Moves();
         Move move = Move.RIGHT;
+        boolean gameEnd = false;
 
         // game start
         while (true) {
-            ++time;
             Position current = snake.peek();
             move = getMoveByDirection(turnAt, moves, move, time);
             Position next = getPositionByMove(current, move);
             // end 조건 검증
             if (isEnd(next))
+                gameEnd = true;
+                ++time;
+            if (gameEnd)
                 break;
             // 이동
             snake.addFirst(next);
@@ -102,7 +101,7 @@ public class Main {
     static Move getMoveByDirection(Queue<Turn> turnAt, Moves moves, Move move, int time) {
         Direction direction = null;
 
-        if (turnAt.peek().afterStart == time) {
+        if (!turnAt.isEmpty() && turnAt.peek().afterStart == time) {
             Turn turn = turnAt.poll();
             direction = turn.direction;
         }
@@ -214,6 +213,12 @@ class Position {
     public Position(int row, int column) {
         this.row = row;
         this.column = column;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Position position = (Position) o;
+        return this.row == position.row && this.column == position.column;
     }
 }
 
