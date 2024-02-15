@@ -1,4 +1,4 @@
-# 코딩 테스트 준비!
+# 코딩 테스트 준비
 
 ## 학습한 알고리즘 개념
 
@@ -19,6 +19,11 @@
     * Monotonic stack
   * Queue
   * Dequeue
+  * Tree
+    * Binary Tree
+      * Complete Binary Tree
+        * Heap
+          * Priority Queue
   * Linked list
 
 ## TIL
@@ -98,5 +103,3 @@
 * [백준 10994. 별 찍기-19](https://www.acmicpc.net/problem/10994)
   * 한 문제를 서로 완전 다른 접근 방법으로 바라보는 습관 가지기
     * 문제 접근 방법에 따라 특정 알고리즘 적용 가능 여부가 결정되기도 한다
-
-
