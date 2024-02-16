@@ -19,6 +19,7 @@
     * Monotonic stack
   * Queue
   * Dequeue
+  * Hash Map
   * Tree
     * Binary Tree
       * Complete Binary Tree
@@ -27,6 +28,12 @@
   * Linked list
 
 ## TIL
+
+#### 24.02.16
+
+* [백준 15829번. Hashing](https://www.acmicpc.net/problem/15829)
+  * 제발 문제좀 똑바로 읽자... 브론즈 2의 쉬워보이는 문제 + 글이 길어서 솔직히 문제 대충 읽었다... 그러니 한참을 헤메지 ㅜㅠ
+  * long을 넘어가는 매우 큰 정수는 BigInteger class를 사용해 표현할 수 있다
 
 #### 24.02.10
 
