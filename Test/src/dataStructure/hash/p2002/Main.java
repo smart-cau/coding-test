@@ -6,13 +6,13 @@ package dataStructure.hash.p2002;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static int n;
-    static HashMap<String, Integer> ins = new HashMap<>();
-    static HashMap<String, Integer> outs = new HashMap<>();
+    static LinkedHashMap<String, Integer> ins = new LinkedHashMap<>();
+    static LinkedHashMap<String, Integer> outs = new LinkedHashMap<>();
     static int result = 0;
 
     public static void main(String[] args) throws NumberFormatException, IOException {
@@ -34,12 +34,19 @@ public class Main {
     }
 
     static void solution() {
-        for (String licensePlate : ins.keySet()) {
+        String[] keys = outs.keySet().toArray(new String[0]);
+        for (int i = 0; i < n; i++) {
+            String licensePlate = keys[i];
             int inOrder = ins.get(licensePlate);
-            int outOrder = outs.get(licensePlate);
-            if (inOrder > outOrder)
-                ++result;
-            // inOrder == outOrder 예외처리 필요
+            for (int j = i + 1; j < n; j++) {
+                String isOverTakeCarPlate = keys[j];
+                int isOverTakeOrder = ins.get(isOverTakeCarPlate);
+                if (inOrder > isOverTakeOrder) {
+                    ++result;
+                    break;
+                }
+
+            }
         }
 
         System.out.println(result);
