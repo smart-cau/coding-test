@@ -29,6 +29,13 @@
 
 ## TIL
 
+#### 24.02.26
+
+* [백준 2606번. 바이러스](https://www.acmicpc.net/problem/2606)
+  * 문제의 조건을 있는 그대로 해석하자!
+    * 문제를 내 생각의 틀에 끼워맞춰 읽어 해맸다
+      * 당연히 directed graph라 생각했지만, 문제의 조건은 undirected 였음...
+
 #### 24.02.16
 
 * [백준 15829번. Hashing](https://www.acmicpc.net/problem/15829)
