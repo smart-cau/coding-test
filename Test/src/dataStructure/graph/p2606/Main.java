@@ -10,8 +10,10 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 public class Main {
 
@@ -45,8 +47,10 @@ public class Main {
 
     static void solution() {
         List<Integer> discovered = new ArrayList<>();
-        // int result = graph.get(1).size() == 0 ? 0 : dfs(1, discovered).size() - 1; // 1번 컴퓨터는 이미 감염되었으므로 제외
-        int result = graph.get(1).size() == 0 ? 0 : stackDFS(1).size() - 1;
+        // int result = graph.get(1).size() == 0 ? 0 : dfs(1, discovered).size() - 1; //
+        // 1번 컴퓨터는 이미 감염되었으므로 제외
+        // int result = graph.get(1).size() == 0 ? 0 : stackDFS(1).size() - 1;
+        int result = graph.get(1).size() == 0 ? 0 : bfs(1).size() - 1;
 
         System.out.println(result);
     }
@@ -78,6 +82,25 @@ public class Main {
                 discovered.add(departNode);
                 for (Integer arrivalNode : graph.get(departNode))
                     stack.push(arrivalNode);
+            }
+        }
+        return discovered;
+    }
+
+    static List<Integer> bfs(int vertex) {
+        List<Integer> discovered = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
+
+        discovered.add(vertex);
+        queue.add(vertex);
+
+        while (!queue.isEmpty()) {
+            int departNode = queue.poll();
+            for (Integer arrivalNode : graph.get(departNode)) {
+                if (!discovered.contains(arrivalNode)) {
+                    discovered.add(arrivalNode);
+                    queue.add(arrivalNode);
+                }
             }
         }
         return discovered;
