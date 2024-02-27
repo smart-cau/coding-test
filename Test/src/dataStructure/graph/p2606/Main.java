@@ -6,7 +6,9 @@ package dataStructure.graph.p2606;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +45,8 @@ public class Main {
 
     static void solution() {
         List<Integer> discovered = new ArrayList<>();
-        int result = graph.get(1).size() == 0 ? 0 : dfs(1, discovered).size() - 1; // 1번 컴퓨터는 이미 감염되었으므로 제외
+        // int result = graph.get(1).size() == 0 ? 0 : dfs(1, discovered).size() - 1; // 1번 컴퓨터는 이미 감염되었으므로 제외
+        int result = graph.get(1).size() == 0 ? 0 : stackDFS(1).size() - 1;
 
         System.out.println(result);
     }
@@ -59,6 +62,24 @@ public class Main {
         }
 
         // return the result when every depth is discovered
+        return discovered;
+    }
+
+    static List<Integer> stackDFS(int vertex) {
+        List<Integer> discovered = new ArrayList<>();
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        stack.push(vertex);
+
+        while (!stack.isEmpty()) {
+            int departNode = stack.pop();
+
+            if (!discovered.contains(departNode)) {
+                discovered.add(departNode);
+                for (Integer arrivalNode : graph.get(departNode))
+                    stack.push(arrivalNode);
+            }
+        }
         return discovered;
     }
 }
