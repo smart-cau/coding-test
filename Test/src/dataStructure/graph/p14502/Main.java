@@ -1,4 +1,4 @@
-// 백준 14502번. 연구소
+// 백준 14502번. 연구소 - Re
 // https://www.acmicpc.net/problem/14502
 // gold 4
 package dataStructure.graph.p14502;
@@ -14,6 +14,7 @@ public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static int n, m;
     static int[][] lab;
+    static int maxCountSafeArea = 0;
 
     public static void main(String[] args) throws IOException {
         input();
@@ -40,6 +41,8 @@ public class Main {
         // 2. 벽이 다 세워지면 바이러스를 퍼트린다
         // 3. 안전 구역을 count 해 max 값을 갱신한다. 이후 1번으로 돌아간다
         setWall(0);
+
+        System.out.println(maxCountSafeArea);
     }
 
     static void setWall(int count) {
@@ -54,6 +57,7 @@ public class Main {
                     lab[row][column] = 1;
                     setWall(++count);
                     lab[row][column] = 0;
+                    --count;
                 }
             }
         }
@@ -78,7 +82,33 @@ public class Main {
             int row = pair[0];
             int column = pair[1];
 
+            for (int i = 0; i < 4; i++) {
+                int x = dx[i] + row;
+                int y = dy[i] + column;
+
+                if (x < n && x >= 0 && y < m && y >= 0) {
+                    if (copied[x][y] == 0) {
+                        copied[x][y] = 2;
+                        queue.add(new int[] { x, y });
+                    }
+                }
+            }
+
         }
+
+        countSafeArea(copied);
+    }
+
+    static void countSafeArea(int[][] copied) {
+        int count = 0;
+        for (int row = 0; row < n; row++) {
+            for (int column = 0; column < m; column++) {
+                if (copied[row][column] == 0)
+                    ++count;
+            }
+        }
+
+        maxCountSafeArea = Math.max(count, maxCountSafeArea);
     }
 
     static int[][] copyLab() {
