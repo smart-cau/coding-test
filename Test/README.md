@@ -29,6 +29,16 @@
 
 ## TIL
 
+#### 24.03.31
+
+* 코테에선 pattern memorizing 또한 중요하다!
+  * 만약 문제가 너무 안풀린다면 패턴을 몰라서일 수도 있다. 따라서 20분 이상 고민해도 답이 안나오면 그냥 답지를 보고 패턴을 암기하는 것을 추천 -> [출처](https://www.youtube.com/watch?v=2V7yPrxJ8Ck)
+  * 코테 문제 해결 능력은 concept, pattern memorizing & problem solving skill의 교집합
+* 후위 연산자를 쓰면 특정 작업 이후 값의 변화를 손쉽게 표현할 수 있다
+* class를 활용하면 코테 문제도 그나마 객체지향스럽게 해결할 수 있다
+* dfs시 방문 여부를 책에서처럼 discovered 배열을 따로 만들어야 하는 경우는 제한적이다
+  * 이동에 특정 규칙(체스, 내리막길 등)이 있다면 방문 여부를 확인하지 않아도 될 수 있다
+
 #### 24.03.20
 
 * [백준 14502번. 연구소](https://www.acmicpc.net/problem/14502)
