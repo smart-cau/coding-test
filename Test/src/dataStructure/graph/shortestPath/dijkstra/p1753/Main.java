@@ -71,6 +71,8 @@ class Dijkstra {
             int currentVertex = current.vertex; 
             int currentDistance = current.weight; // 이전 vertex에서 current vertex까지 바로 오는 cost
 
+            // 이미 처리된 정점을 스킵. 최적의 경로를 찾은 것.
+            // 해당 정점까지의 거리(currentDistance)가 이미 알고 있는 해당 정점까지의 최단 거리(dist[currentVertex])보다 크다면, 이는 이미 최적의 경로를 찾았다는 것을 의미
             if (currentDistance > dist[currentVertex])
                 continue;
 
