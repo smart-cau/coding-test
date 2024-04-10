@@ -29,6 +29,12 @@
 
 ## TIL
 
+#### 24.04.10
+
+* bfs로 최단거리를 구할 때 서로 다른 지점에서 한 목적지로 가는 경우라면, 생각을 뒤집어 목적지에서 한 번의 bfs 탐색이면 충분하다!
+  * 목적지에서 출발하면 효율적인 경우도 있다는 것을 기억하자 -> [부대복귀](https://school.programmers.co.kr/learn/courses/30/lessons/132266)
+* 문제를 작은 문제의 조합으로 쪼개서 생각해보는 훈련을 하자 -> [특정한 최단경로](https://www.acmicpc.net/problem/1504)
+
 #### 24.03.31
 
 * 코테에선 pattern memorizing 또한 중요하다!
