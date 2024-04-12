@@ -31,6 +31,12 @@
 
 #### 24.04.11
 
+* [트리의 부모찾기](https://www.acmicpc.net/problem/11725)
+  * Tree를 표현하는 방식으로 TreeNode만을 고집해서는 풀 수 없는 문제
+    * Tree를 Graph, Array, TreeNode 등 다양한 방식으로 구현할 수 있고 문제에 따라 필요 방법이 다르다는 걸 명심할 것
+
+#### 24.04.11
+
 * [베스트 앨범](https://school.programmers.co.kr/learn/courses/30/lessons/42579?language=java)
   * 우선은 효율성보다 가장 빠르게 답을 만드는데 집중하자
     * 처음부터 시간이 오래 걸리지만 최대 효율을 낼 수 있을 것 같은 방법으로 코딩을 시작함
