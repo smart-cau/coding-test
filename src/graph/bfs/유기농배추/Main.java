@@ -1,5 +1,6 @@
 /*
 * 백준 1012번. 유기농배추 silver 2
+* https://www.acmicpc.net/problem/1012
 * */
 package graph.bfs.유기농배추;
 
@@ -46,7 +47,9 @@ public class Main {
                 Point p = cabbages.pop();
                 if (visited[p.x][p.y]) continue;
                 visited[p.x][p.y] = true;
-                bfs(p.x, p.y);
+                dfs(p.x, p.y);
+                ++result;
+//                bfs(p.x, p.y);
             }
             results.add(result);
         }
@@ -55,10 +58,20 @@ public class Main {
         }
     }
 
+    static void dfs(int px, int py) {
+        for (int k = 0; k < 4; k++) {
+            int nx = px + dx[k];
+            int ny = py + dy[k];
+            if (nx >= 0 && nx < row && ny >= 0 && ny < col && !visited[nx][ny] && farm[nx][ny] == 1) {
+                visited[nx][ny] = true;
+                dfs(nx, ny);
+            }
+        }
+    }
+
     static void bfs(int px, int py) {
         Queue<Point> queue = new LinkedList<>();
         queue.offer(new Point(px, py));
-        ++result;
 
         while (!queue.isEmpty()) {
             Point point = queue.poll();
