@@ -29,6 +29,25 @@
 
 ## TIL
 
+#### 25.01.09
+* [도넛과 막대 그래프](https://school.programmers.co.kr/learn/courses/30/lessons/258711)
+  * 그래프라고 dfs, bfs만 생각해서는 풀 수 없는 문제였다... 이런 문제 처음이야
+  * 각 그래프의 특징을 분석해서 풀어야 했음
+  * 구현이 깡패다...
+
+* [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844)
+  * visited true 처리는 큐에 넣을 때 하자!!!!!!! 안하니까 계속 틀린다!!!!
+
+#### 25.01.07
+* [Stone Wall](https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/)
+  * 작은 입력 데이터로 직접 알고리즘을 손으로 시뮬레이션해 볼 것! 
+    예를 들어, 입력 배열 H=[8,5,7]에 대해 직접 스택의 변화와 블록 개수를 기록하면서 확인
+    시뮬레이션은 문제의 요구사항과 논리를 일치시키는 데 도움이 됨
+  * 예제와 반례에 집중
+     문제 풀이 후, 결과가 직관적으로 이해되지 않을 때, 다양한 케이스를 검증해 보세요.
+     특히 최소값이나 최대값 같은 극단적인 입력에서 문제를 다시 생각해 보면, 잘못된 논리를 발견하기 쉽습니다.
+
+
 #### 24.12.30
 * [스도쿠](https://www.acmicpc.net/problem/2580)
   * 코드가 너무 길고 복잡해진다 싶으면 뭔가 잘못된거다...
