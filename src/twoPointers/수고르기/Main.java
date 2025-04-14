@@ -1,0 +1,46 @@
+package twoPointers.수고르기;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+/*
+ * 백준 2230번. 수 고르기. gold 5
+ * https://www.acmicpc.net/problem/2230
+ * #이분탐색 #매개변수탐색
+ * */
+
+class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+
+        int[] numbers = new int[n];
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            numbers[i] = Integer.parseInt(st.nextToken());
+        }
+
+        Arrays.sort(numbers);
+
+        int start = 0, end = 0, min = Integer.MAX_VALUE;
+
+        while (start <= end && end < n) {
+            int minus = numbers[end] - numbers[start];
+            if (minus < m)
+                ++end;
+            else {
+                ++start;
+                min = Math.min(min, minus);
+            }
+        }
+
+        System.out.println(min);
+    }
+}
